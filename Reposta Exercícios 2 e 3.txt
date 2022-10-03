@@ -1,0 +1,2 @@
+Utilizando os valores ymin=600 e ymax=0, a projeção do eixo y ocorre da parte de cima da tela para baixo, porque o valor mínimo é maior do que o máximo.
+Isso é útil porque muitas ferramentas gráficas utilizam essa configuração.
