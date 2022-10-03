@@ -46,21 +46,8 @@ int main()
 	// Inicialização da GLFW
 	glfwInit();
 
-	//Muita atenção aqui: alguns ambientes não aceitam essas configurações
-	//Você deve adaptar para a versão do OpenGL suportada por sua placa
-	//Sugestão: comente essas linhas de código para desobrir a versão e
-	//depois atualize (por exemplo: 4.5 com 4 e 5)
-	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	//Essencial para computadores da Apple
-	//#ifdef __APPLE__
-	//	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	//#endif
-
 	// Criação da janela GLFW
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Ola Triangulo!", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Ola Ortho!", nullptr, nullptr);
 	glfwMakeContextCurrent(window);
 
 	// Fazendo o registro da função de callback para a janela GLFW
@@ -100,7 +87,6 @@ int main()
 	assert(colorLoc > -1);
 
 	glm::mat4 projection = glm::mat4(1);
-	//projection = glm::ortho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 	projection = glm::ortho(-3.0, 3.0, -3.0, 3.0, -1.0, 1.0);
 
 	GLint projLoc = glGetUniformLocation(shader->Program, "projection");
@@ -174,33 +160,6 @@ int setupGeometry()
 		 0.0, 0.5, 0.0,
 		 //outro triangulo vai aqui
 	};
-	/*
-	GLfloat* vertices;
-
-	vertices = new GLfloat[nvertices * 3]; //* nro de valores do(s) atributo(s)
-
-	//ponto do centro -- origem
-	vertices[0] = 0.0; //x
-	vertices[1] = 0.0; //y
-	vertices[2] = 0.0; //z
-
-	float angulo = 0.0;
-	float deltaAngulo = 2 * pi / (nvertices - 2);
-
-	int i = 3; //posição em vértices onde começa o segundo ponto
-
-	float raio = 0.5;
-
-	while (i < nvertices * 3)
-	{
-		vertices[i] = raio * cos(angulo); //x
-		vertices[i + 1] = raio * sin(angulo); //y
-		vertices[i + 2] = 0.0;
-
-		i += 3;
-		angulo += deltaAngulo;
-	}
-	*/
 	GLuint VBO, VAO;
 
 	//Geração do identificador do VBO
